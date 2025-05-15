@@ -1,0 +1,7 @@
+numpy
+pillow
+matplotlib
+tqdm
+streamlit
+spandrel
+spandrel_extra_arches
