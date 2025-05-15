@@ -7,7 +7,7 @@
   - Streamlit - для создания пользовательского интерфейса.
 
 ```sh
-pip install -r docs/requirements.txt
+pip install -r requirements.txt
 ```
 
 To create a `setup.py` file in the root directory, you can use the following command:
