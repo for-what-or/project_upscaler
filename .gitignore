@@ -1,6 +1,7 @@
 /data
 /trained_models copy
 /venv
+/temp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

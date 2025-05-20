@@ -7,6 +7,7 @@ from PIL import Image
 from src.model import *
 from src.model_folder import *
 from src.ui.dialogs import *
+from streamlit_image_comparison import image_comparison
 
 config = json.load(open('src/config.json'))
 model_list = json.load(open('src/model_list.json'))
@@ -17,8 +18,9 @@ model_edit_permission = config["model_edit_permission"]
 @st.cache_resource
 def get_model(model_type):
     return load_sr_model(models_path + '/' + model_type + '.pth')
-        
+
 def main():
+    model_list = json.load(open('src/model_list.json'))
     st.set_page_config(
         page_title="Апскейлер",
         layout="wide",
@@ -68,11 +70,13 @@ def main():
             help="Меньшие значения для экономии памяти, большие для скорости"
         )
         
-        show_metrics = st.checkbox("Показать метрики качества", True)
+        show_metrics = st.checkbox("Показать метрики качества", False)
 
     col1, col2 = st.columns(2)
-
+    proc_time = 0
     with col1:
+        global image
+        image = None
         uploaded_file = st.file_uploader(
             "📤 Загрузите изображение",
             type=["jpg", "png", "jpeg"],
@@ -81,13 +85,15 @@ def main():
         
         if uploaded_file:
             image = Image.open(uploaded_file)
-            st.image(
+            '''st.image(
                 image,
                 caption="Исходное изображение",
                 use_container_width=True
-            )
+            )'''
 
     with col2:
+        global result_img
+        result_img = None
         if uploaded_file:
             if st.button("🚀 Увеличить разрешение", type="primary"):
                 start_time = time.time()
@@ -114,16 +120,17 @@ def main():
                         my_bar.progress(int((i+1)/len(tiles)*100), text=progress_text)
                     
                     result = merge_tiles(processed_tiles, positions, image.size, scale_factor)
+                    
                     result_img = result.permute(1, 2, 0).clamp(0, 1).cpu().numpy()
                     result_img = Image.fromarray((result_img * 255).astype(np.uint8))
                 
                 proc_time = time.time() - start_time
                 
-                st.image(
+                '''st.image(
                     result_img,
-                    caption=f"Увеличенное изображение)",
+                    caption=f"Увеличенное изображение",
                     use_container_width=True
-                )
+                )'''
                 
                 # Кнопка скачивания
                 buf = BytesIO()
@@ -135,8 +142,17 @@ def main():
                     "image/png"
                 )
                 
-                if show_metrics:
-                    st.subheader("📊 Метрики")
-                    st.metric("Время обработки", f"{proc_time:.2f} сек")
-                    st.metric("Размер оригинала", f"{image.size[0]}x{image.size[1]}")
-                    st.metric("Размер результата", f"{result_img.size[0]}x{result_img.size[1]}")
+    if image and result_img:
+        image_comparison(
+            img1=image,
+            img2=result_img,
+            width=1280,
+            label1="Исходное изображение",
+            label2="Результат",
+        )
+    
+    if show_metrics:
+        st.subheader("📊 Метрики")
+        st.metric("Время обработки", f"{proc_time:.2f} сек")
+        st.metric("Размер оригинала", f"{image.size[0]}x{image.size[1]}")
+        st.metric("Размер результата", f"{result_img.size[0]}x{result_img.size[1]}")
