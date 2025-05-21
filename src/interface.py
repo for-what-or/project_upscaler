@@ -66,7 +66,7 @@ def main():
         
         tile_size = st.slider(
             "Размер тайла",
-            32, 512, 128,
+            32, 512, 64,
             help="Меньшие значения для экономии памяти, большие для скорости"
         )
         
@@ -85,11 +85,11 @@ def main():
         
         if uploaded_file:
             image = Image.open(uploaded_file)
-            '''st.image(
+            st.image(
                 image,
                 caption="Исходное изображение",
                 use_container_width=True
-            )'''
+            )
 
     with col2:
         global result_img
@@ -126,11 +126,11 @@ def main():
                 
                 proc_time = time.time() - start_time
                 
-                '''st.image(
+                st.image(
                     result_img,
                     caption=f"Увеличенное изображение",
                     use_container_width=True
-                )'''
+                )
                 
                 # Кнопка скачивания
                 buf = BytesIO()
@@ -142,17 +142,17 @@ def main():
                     "image/png"
                 )
                 
-    if image and result_img:
+    '''if image and result_img:
         image_comparison(
             img1=image,
             img2=result_img,
             width=1280,
             label1="Исходное изображение",
             label2="Результат",
-        )
+        )'''
     
     if show_metrics:
         st.subheader("📊 Метрики")
         st.metric("Время обработки", f"{proc_time:.2f} сек")
-        st.metric("Размер оригинала", f"{image.size[0]}x{image.size[1]}")
-        st.metric("Размер результата", f"{result_img.size[0]}x{result_img.size[1]}")
+        #st.metric("Размер оригинала", f"{image.size[0]}x{image.size[1]}")
+        #st.metric("Размер результата", f"{result_img.size[0]}x{result_img.size[1]}")
