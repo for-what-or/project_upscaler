@@ -33,7 +33,7 @@
 
 Для ручной установки и запуска выполните следующие действия:
 - Выполнить первые два шага из раздела автоматической установки.
-- Создайте новое окружение и перейдите в него:
+- Создайте новое окружение и активируйте его:
   ```sh
   python -m venv venv
   venv/Scripts/Activate
@@ -43,7 +43,7 @@
   ```sh
   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
   ```
-  Либо же другой командой, пердставленной на [сайте](https://pytorch.org/get-started/locally/).
+  Либо же другой командой, представленной на [сайте](https://pytorch.org/get-started/locally/).
 - Установить необходимые зависимости:
   ```sh
   pip install -r requirements.txt
