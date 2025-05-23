@@ -38,10 +38,12 @@
   python -m venv venv
   venv/Scripts/Activate
   ```
-- Установить [PyTorch](https://pytorch.org/get-started/locally/) соответствующий вашему компьютеру. Например следующей командой:
+- Установить [PyTorch](https://pytorch.org/get-started/locally/) соответствующий вашему компьютеру.\
+  Например выполнив следующую строку:
   ```sh
   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
   ```
+  Либо же другой командой, пердставленной на [сайте](https://pytorch.org/get-started/locally/).
 - Установить необходимые зависимости:
   ```sh
   pip install -r requirements.txt
@@ -50,3 +52,9 @@
   ```sh
   streamlit run app.py
   ```
+
+## **Создатель**
+Студент Уфимского университета науки и технологий, группы ПРО-433б Калямов Ильфат.\
+Для связи:
+- [Telegram](https://t.me/for_what_or).
+- [VK](https://vk.com/for_what_or)
