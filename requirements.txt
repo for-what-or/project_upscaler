@@ -5,4 +5,3 @@ tqdm
 streamlit
 spandrel
 spandrel_extra_arches
-streamlit-image-comparison

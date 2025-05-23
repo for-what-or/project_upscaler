@@ -7,7 +7,7 @@ from PIL import Image
 from src.model import *
 from src.model_folder import *
 from src.ui.dialogs import *
-from streamlit_image_comparison import image_comparison
+from src.modules.streamlit_image_comparison import image_comparison
 
 config = json.load(open('src/config.json'))
 model_list = json.load(open('src/model_list.json'))
@@ -142,14 +142,14 @@ def main():
                     "image/png"
                 )
                 
-    '''if image and result_img:
+    if image and result_img:
         image_comparison(
             img1=image,
             img2=result_img,
             width=1280,
             label1="Исходное изображение",
             label2="Результат",
-        )'''
+        )
     
     if show_metrics:
         st.subheader("📊 Метрики")
