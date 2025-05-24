@@ -2,22 +2,22 @@
 Этот проект предназначен для увеличения разрешения фотографий.
 
 ## **Используемый инструментарий**
-В проекте использовались следующие стеки технологий (ссылки на каждую библиотеку будут прикреплены):
+В проекте использовались следующие стеки технологий :
 - **Язык программирования**:
-  - [Python]()
+  - [Python](https://www.python.org/downloads/)
 - **Фреймворк для работы с архитектурами нейросетей**:
-  - [PyTorch]()
-- **Универсализация архитектур**:
-  - [Spandrel]()
+  - [PyTorch](https://pytorch.org/get-started/locally/)
+- **Универсализация взаимодействий с архитектурами**:
+  - [Spandrel](https://pypi.org/project/spandrel/)
 - **Библиотеки для обработки изображений**:
-  - [Pillow]()
+  - [Pillow](https://pypi.org/project/pillow/)
 - **Интерфейс**:
-  - [Streamlit]() - для создания пользовательского интерфейса.
-  - Был взят модуль для Streamlit под названием [streamlit_image_comparison](), созданный сообществом.
+  - [Streamlit](https://pypi.org/project/streamlit/) - для создания пользовательского интерфейса.
+  - Был взят модуль для Streamlit под названием [streamlit_image_comparison](https://pypi.org/project/streamlit-image-comparison/), созданный сообществом.
 - **Дополнительный библиотеки**:
-  - [Numpy]()
-  - [Tqdm]()
-  - [Matplotlib]()
+  - [Numpy](https://pypi.org/project/numpy/)
+  - [Tqdm](https://pypi.org/project/tqdm/)
+  - [Matplotlib](https://pypi.org/project/matplotlib/)
 
 ## **Автоматическая установка и запуск**
 Для автоматической установки и запуска проекта необходимо выполнить следующие действия.
